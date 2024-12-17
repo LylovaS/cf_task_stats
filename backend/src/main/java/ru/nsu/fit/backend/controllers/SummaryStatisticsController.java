@@ -3,21 +3,20 @@ package ru.nsu.fit.backend.controllers;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.nsu.fit.backend.cf_records.ContestApiResult;
-import ru.nsu.fit.backend.cf_requests.CfRequester;
+import ru.nsu.fit.backend.TaskSubmissions;
+import ru.nsu.fit.backend.stat_records.TaskStatRecord;
 
 
 @RestController
 public class SummaryStatisticsController {
 
     @GetMapping("/api_v1/sum_stats")
-    public ContestApiResult person_stats(
-            @RequestParam(value = "contestId") int contestId
+    public TaskStatRecord person_stats(
+            @RequestParam(value = "contestId") int contestId,
+            @RequestParam(value = "taskName") String taskName
     ) throws Exception {
-        ContestApiResult result;
-        result = CfRequester.requestContestResult(contestId);
-
-        return result;
+        TaskSubmissions submissions = new TaskSubmissions(taskName, contestId);
+        return submissions.getStatRecord();
     }
 
 

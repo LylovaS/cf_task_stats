@@ -1,6 +1,6 @@
 package ru.nsu.fit.backend.cf_records;
 
-public record Submission(
+public record CfSubmission(
         long id,
         long contestId,
         long creationTimeSeconds,

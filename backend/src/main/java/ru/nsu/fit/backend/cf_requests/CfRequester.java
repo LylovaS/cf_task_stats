@@ -32,12 +32,12 @@ public class CfRequester {
         return response.getBody();
     }
 
-    static public ContestApiResult requestPersonResult(final int contestId, final String handle) throws Exception {
+    static public ContestApiResult requestPersonResult(final long contestId, final String handle) throws Exception {
         String url = String.format(PERSON_API_TEMPLATE, contestId, handle);
         return requestApi(url);
     }
 
-    static public ContestApiResult requestContestResult(final int contestId) throws Exception {
+    static public ContestApiResult requestContestResult(final long contestId) throws Exception {
         String url = String.format(CONTEST_API_TEMPLATE, contestId);
         return requestApi(url);
     }
